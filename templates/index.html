@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Analizador Léxico</title>
+    <link rel="stylesheet" href="../static/Style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>INGRESA LOS DATOS</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <div>
+                <input class="subirArchivo" type="file" id="file" name="file" accept=".txt">
+            </div>
+            <button type="submit">Analizar Archivo</button>
+        </form>
+        <form method="POST" enctype="multipart/form-data">
+            <textarea name="code" placeholder="Escribe tu código aquí..." required></textarea>
+            <button type="submit">Analizar</button>
+            <div class="result">
+                <div>
+                    {% for token in tokens %}
+                    <p>{{ token.type }}</p>
+                    {% endfor %}
+                </div>
+                <div>
+                    {% for token in tokens %}
+                    <p>Linea {{ token.line }} <br> {{ token.description }} : {{ token.value }}</p>
+                    {% endfor %}
+                </div>           
+                 <!-- Aquí se podrían mostrar resultados o errores -->
+            </div>
+            
+        </form>
+
+    </div>
+</body>
+</html>
